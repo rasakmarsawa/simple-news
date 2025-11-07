@@ -1,0 +1,20 @@
+.
+├── backend
+│   ├── app.js
+│   ├── config
+│   ├── controllers
+│   ├── Dockerfile
+│   ├── middlewares
+│   ├── migrations
+│   ├── models
+│   ├── node_modules
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── routes
+│   ├── seeders
+│   └── server.js
+├── docker-compose.yml
+├── folder_structure.txt
+└── frontend
+
+11 directories, 7 files

@@ -1,0 +1,9 @@
+NODE_ENV=development
+DB_HOST=db
+DB_PORT=3307
+DB_USERNAME=user
+DB_PASSWORD=password
+DB_NAME=simple-news
+DB_DIALECT=mysql
+
+JWT_SECRET=this-is-a-secret

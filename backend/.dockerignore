@@ -1,0 +1,13 @@
+node_modules
+
+npm-debug.log
+*.log
+
+.env
+
+sequelize-meta.json
+
+Dockerfile
+
+tmp/
+.cache/
