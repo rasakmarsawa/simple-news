@@ -4,12 +4,17 @@ import cors from "cors";
 import compression from "compression";
 import routes from "./routes/index.js";
 
+import swaggerUi from "swagger-ui-express";
+import swaggerSpecs from "./config/swagger.js";
+
 const app = express();
 
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(compression());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 app.use("/", routes);
 

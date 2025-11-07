@@ -22,5 +22,17 @@ export default (sequelize, DataTypes) => {
       timestamps: false
     }
   );
+
+  Follow.associate = (models) => {
+    Follow.belongsTo(models.User, {
+      foreignKey: "follower_id",
+      as: "follower",
+    });
+    Follow.belongsTo(models.User, {
+      foreignKey: "followee_id",
+      as: "followee",
+    });
+  };
+    
   return Follow;
 };

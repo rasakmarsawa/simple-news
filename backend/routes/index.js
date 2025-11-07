@@ -11,6 +11,4 @@ router.use("/api", postRoutes);
 router.use("/api", followRoutes);
 router.use("/api", feedRoutes);
 
-
-
 export default router;

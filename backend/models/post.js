@@ -12,5 +12,13 @@ export default (sequelize, DataTypes) => {
       timestamps: false
     }
   );
+
+  Post.associate = (models) => {
+    Post.belongsTo(models.User, {
+      foreignKey: "user_id",
+      as: "user",
+    });
+  };
+    
   return Post;
 };

@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - DB_HOST=db
       - DB_USERNAME=user
       - DB_PASSWORD=password
