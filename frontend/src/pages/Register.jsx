@@ -1,48 +1,68 @@
 import React, { useState } from 'react';
 import { api } from '../api/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import ErrorAlert from '../components/ErrorAlert'; // make sure this path is correct
 
 export default function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post('/auth/register', { username, password });
-      navigate('/login'); // redirect to login after successful registration
+      await api.post('/register', { username, password });
+      navigate('/login'); // redirect after successful registration
     } catch (err) {
-      alert(err.response?.data?.message || 'Error registering');
+      setError(err.response?.data?.message || 'Error registering');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+    <div className="min-h-screen flex items-center justify-center bg-blue-600 relative">
+      {/* Error alert */}
+      <ErrorAlert message={error} onClose={() => setError('')} />
+
+      <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
+          Create Account
+        </h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Username"
             value={username}
-            onChange={e => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             className="mb-4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className="mb-6 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition-colors"
+            className="bg-blue-500 text-white p-3 rounded hover:bg-blue-700 transition-colors font-medium"
           >
             Register
           </button>
         </form>
+
+        {/* Back to login link */}
+        <div className="text-center mt-4">
+          <p className="text-gray-600">
+            Already have an account?{' '}
+            <Link
+              to="/login"
+              className="text-blue-600 font-semibold hover:underline hover:text-blue-700 transition"
+            >
+              Back to login &gt;
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
