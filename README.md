@@ -71,6 +71,20 @@ It allows users to:
 14 directories, 14 files
 
 ```
+
+---
+
+## 📝 Design Notes
+
+**Simple News** is designed with simplicity, scalability, and maintainability in mind:
+
+- **Architecture** — Built with a **MERN stack** and **MySQL** database for structured data and relational consistency. React handles the frontend, while Express/Node.js provides a RESTful API backend.  
+- **Folder Structure** — Separation of concerns: controllers, models, routes, middlewares, and seeders are organized for clarity and easier maintenance.  
+- **Authentication** — Uses **JWT-based authentication** for stateless and secure user sessions.  
+- **Feed Logic** — The backend queries posts from the users a person follows, orders them by creation time, and returns them to the frontend for display. No additional processing is done beyond the database query.  
+- **Docker & Deployment** — Containers ensure consistent environments across development and production. `docker-compose` simplifies orchestration of frontend, backend, and database services.  
+- **Scalability** — Designed to allow easy addition of new features such as comments, likes, or notifications without major refactoring.  
+
 ---
 
 ## 🚀 Installation & Setup
