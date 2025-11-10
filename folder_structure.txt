@@ -16,5 +16,15 @@
 ├── docker-compose.yml
 ├── folder_structure.txt
 └── frontend
+    ├── Dockerfile
+    ├── eslint.config.js
+    ├── index.html
+    ├── node_modules
+    ├── package.json
+    ├── package-lock.json
+    ├── public
+    ├── README.md
+    ├── src
+    └── vite.config.js
 
-11 directories, 7 files
+14 directories, 14 files
