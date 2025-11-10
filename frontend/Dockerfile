@@ -6,11 +6,17 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Install 'serve' globally for static hosting
+RUN npm install -g serve
+
 # Copy source code
 COPY . .
 
-# Expose dev server port
-EXPOSE 5173
+# Build the application
+RUN npm run build
 
-# Start dev server
-CMD ["npm", "run", "dev", "--", "--host"]
+# Expose the runtime port
+EXPOSE 3000
+
+# Start production server
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-5173}"]
