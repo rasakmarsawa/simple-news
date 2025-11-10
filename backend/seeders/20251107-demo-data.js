@@ -1,6 +1,19 @@
 import bcrypt from "bcryptjs";
 
 export async function up(queryInterface, Sequelize) {
+  // Check if users already exist
+  const users = await queryInterface.sequelize.query(
+    `SELECT COUNT(*) AS count FROM users;`,
+    { type: Sequelize.QueryTypes.SELECT }
+  );
+
+  if (users[0].count > 0) {
+    console.log("🟡 Users already exist, skipping seed...");
+    return;
+  }
+
+  console.log("🌱 Seeding initial data...");
+
   // Hash passwords
   const password = await bcrypt.hash("password", 10);
 

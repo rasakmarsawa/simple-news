@@ -1,23 +1,61 @@
+# Node modules
 backend/node_modules/
 frontend/node_modules/
 
+# Environment files
 backend/.env
 frontend/.env
+.env
 
+# Logs
 *.log
-npm-debug.log
+npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
+# Dependency directories
+**/dist/
+**/build/
+**/.parcel-cache/
+**/.vite/
+**/coverage/
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
 docker-compose.override.yml
 
-sequelize-meta.json
-
-frontend/build/
-frontend/dist/
-
+# System files
 .DS_Store
 Thumbs.db
 
-tmp/
+# IDE / Editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Lock files (optional if you prefer regenerating)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Local environment & runtime data
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Optional: ignore uploads or local files
+backend/uploads/
+frontend/public/uploads/
+
+# Optional: ignore compiled documentation or cache
+docs/
 .cache/

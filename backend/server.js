@@ -1,9 +1,12 @@
 import dotenv from "dotenv";
 import app from "./app.js";
 import db from "./models/index.js";
+import { exec } from "child_process";
+import util from "util";
 
 dotenv.config();
 
+const execPromise = util.promisify(exec);
 const PORT = process.env.PORT || 5000;
 const MAX_RETRIES = 100;
 const RETRY_DELAY = 3000; // 3 seconds
@@ -13,9 +16,15 @@ const connectWithRetry = async (retries = MAX_RETRIES) => {
     try {
       await db.sequelize.authenticate();
       console.log("✅ Database connected...");
-      if(process.env.NODE_ENV==="development"){
-        await db.sequelize.sync(); // optional: use only in development
-      }      
+
+      if (process.env.NODE_ENV === "development") {
+        console.log("🧩 Running migrations...");
+        await execPromise("npm run db:migrate", { stdio: "inherit" });
+
+        console.log("🌱 Running seeders...");
+        await execPromise("npm run db:seed", { stdio: "inherit" });
+      }
+
       return;
     } catch (err) {
       console.warn(

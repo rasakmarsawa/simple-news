@@ -2,11 +2,8 @@ services:
   db:
     image: mysql:8.0
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: simple-news
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+    env_file:
+      - ./backend/.env      
     ports:
       - "3307:3306"
     volumes:
@@ -22,13 +19,21 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - db
-    environment:
-      - NODE_ENV=development
-      - DB_HOST=db
-      - DB_USERNAME=user
-      - DB_PASSWORD=password
-      - DB_NAME=simple-news
-      - DB_DIALECT=mysql
+    env_file:
+      - ./backend/.env    
+
+  frontend:
+    build: ./frontend
+    container_name: simple-news-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file:
+      - ./frontend/.env      
+    depends_on:
+      - backend
 
 volumes:
   db_data:
