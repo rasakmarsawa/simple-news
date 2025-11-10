@@ -179,7 +179,7 @@ Current deployment configuration:
 
 ## 🧪 Testing
 
-> 📄 [Test Case Documentation](#) *(coming soon)*
+> 📄 [Test Case Documentation](TEST_CASES.md)
 
 ---
 
@@ -218,3 +218,4 @@ Connect with me on [LinkedIn](https://linkedin.com/in/yogaaffella) 🌐
 Feel free to reach out or contribute!
 
 ---
+
