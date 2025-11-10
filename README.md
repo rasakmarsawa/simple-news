@@ -94,7 +94,7 @@ It allows users to:
 
 ## 🌍 Deployment
 
-> 🔗 [Live Demo / Deployment Link](#) *(coming soon)*
+> 🔗 [Live Demo / Deployment Link](https://simple-news-iota.vercel.app)
 
 ---
 
