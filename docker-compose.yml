@@ -30,5 +30,18 @@ services:
       - DB_NAME=simple-news
       - DB_DIALECT=mysql
 
+  frontend:
+    build: ./frontend
+    container_name: simple-news-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+
 volumes:
   db_data:
