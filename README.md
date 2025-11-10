@@ -71,12 +71,95 @@ It allows users to:
 14 directories, 14 files
 
 ```
-
 ---
 
 ## 🚀 Installation & Setup
 
-> ⚠️ Currently under preparation — installation and setup instructions will be added after testing in VM.
+### 🧰 Prerequisites
+
+Make sure you have these installed on your system:
+
+* [Docker](https://docs.docker.com/get-docker/)
+* [Docker Compose V2](https://docs.docker.com/compose/)
+
+---
+
+### ⚙️ 1. Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/simple-news.git
+cd simple-news
+```
+
+---
+
+### 📄 2. Set Up Environment Variables
+
+Copy the example environment file and adjust as needed:
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+> ⚙️ Set `NODE_ENV=development` to automatically run database migrations and seed initial data during container startup.
+
+If you need a random JWT secret, generate it with **OpenSSL**:
+
+```bash
+openssl rand -hex 64
+```
+
+---
+
+### 🐳 3. Run with Docker Compose
+
+From the project root:
+
+```bash
+docker compose up --build
+```
+
+This will:
+
+* Start the **MySQL** container
+* Build and run the **backend**
+* Build and run the **frontend**
+
+Services will be available at:
+
+* 🖥️ Frontend → `http://localhost:5173`
+* ⚙️ Backend → `http://localhost:5000`
+
+---
+
+### 🧠 4. Database Migration & Seeding (Production)
+
+If `NODE_ENV` is **not** set to `development`, migrations and seeds must be done manually.
+
+Open a shell in the backend container:
+
+```bash
+docker compose exec backend bash
+```
+
+Then run:
+
+```bash
+npm run db:migrate
+npm run db:seed
+```
+
+---
+
+### 🌐 5. Deployment Setup
+
+Current deployment configuration:
+
+| Component    | Platform                             |
+| ------------ | ------------------------------------ |
+| **Frontend** | [Vercel](https://vercel.com)         |
+| **Backend**  | [Railway](https://railway.app)       |
+| **Database** | [Railway MySQL](https://railway.app) |
 
 ---
 
