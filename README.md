@@ -101,7 +101,7 @@ Make sure you have these installed on your system:
 ### ⚙️ 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/simple-news.git
+git clone https://github.com/rasakmarsawa/simple-news.git
 cd simple-news
 ```
 
